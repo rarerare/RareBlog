@@ -1,0 +1,27 @@
+.main-tab-pane{
+	background-color:#ffffee;
+	color:#000000;
+	padding:10px;
+	text-indent: 2em;
+	line-height:200%;
+	border-style:none;
+	
+}
+#mainbody{
+	background-color:#dddd99;
+	font-size:1.6em;
+}
+.tab-content{
+	border-style:none;
+	
+}
+
+
+.active #introtab,.active #essaytab, .active #noveltab, .active #contacttab{
+	background-color:#ffffee;
+}
+.entry{
+	width:100%;
+	background-color:#ffffee;
+	
+}
