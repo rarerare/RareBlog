@@ -1,10 +1,11 @@
 .main-tab-pane{
 	background-color:#ffffee;
 	color:#000000;
-	padding:10px;
+	padding:5%;
 	text-indent: 2em;
 	line-height:200%;
 	border-style:none;
+	
 	
 }
 #mainbody{
@@ -21,7 +22,39 @@
 	background-color:#ffffee;
 }
 .entry{
-	width:100%;
+	
+	
 	background-color:#ffffee;
 	
+}
+
+.entry .date{
+	float: right;
+	
+}
+.tabFrame{
+	display:block;
+
+	width:100%;
+	background-color:#ffffee;
+	margin-left:0px;
+
+    scrolling:yes;	
+}
+.if-tab-pane{
+	background-color:#ffffee;
+	color:#000000;
+	padding:0px;
+	text-indent: 2em;
+	line-height:200%;
+	border-style:none;
+}
+.entries{
+	padding-left:5%;
+	padding-right:5%;
+	background-color:#ffffee;
+}
+#essayEntriesBody{
+	background-color:#ffffee;
+
 }

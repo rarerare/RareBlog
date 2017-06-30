@@ -1,13 +1,14 @@
 window.onload=function(){
-	$.post(
-		"mainservlet",
-		{
-			mAction: "getEss"
-		},
-		function(data, status, jqXHR ){
-			$("#essay").html(data);
+	resizeIframe();
+		
+}
+function resizeIframe(){
+	$(".tabFrame").each(function(){
+		var frame=this;
+		this.onload=function(){
+			
+			frame.height=frame.contentWindow.document.body.scrollHeight+40;
 		}
-		)
-		
-		
+	});
+	
 }

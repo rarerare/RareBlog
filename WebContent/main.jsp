@@ -12,6 +12,8 @@
 <script src="bootstrap.min.js"></script>
 <script src="main.js"></script>
 
+
+
 </head>
 <body id="mainbody">
 <div class="container">
@@ -28,13 +30,15 @@
 		思考它深层的逻辑， 而不是满足于简单的解释。 算是一个aesthete, thinker,
 		和文学爱好者。 
 	</div>
-	<div id="essay" class="tab-pane fade main-tab-pane" >
+	<div id="essay" class="tab-pane fade if-tab-pane" >
+		<iframe src="essayEntries.html" frameborder="0" class="tabFrame">
+		
+		</iframe>
+	</div>
+	<div id="novel" class="tab-pane fade if-tab-pane">
 		
 	</div>
-	<div id="novel" class="tab-pane fade main-tab-pane">
-		
-	</div>
-	<div id="contact" class="tab-pane fade main-tab-pane">
+	<div id="contact" class="tab-pane fade main-tab-pane ">
 		
 	</div>
 </div>

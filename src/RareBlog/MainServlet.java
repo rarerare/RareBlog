@@ -69,6 +69,27 @@ public class MainServlet extends HttpServlet {
 				}
 				break;
 			
+			case "login":
+				try {
+					login(request,response);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "checkLogin":
+				checkLogin(request,response);
+				break;
+			
+			case "getContent":
+				try {
+					getContent(request,response);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			
 			default:
 				response.sendRedirect("main.jsp");
 				
@@ -82,9 +103,9 @@ public class MainServlet extends HttpServlet {
 				+ "?useUnicode=true&characterEncoding=UTF-8","root","");
 		
 		Statement stmt=conn.createStatement();
-		ResultSet rs= stmt.executeQuery("select title, time from essay");
+		ResultSet rs= stmt.executeQuery("select title, time,id from essay");
 		PrintWriter pw=response.getWriter();
-		DateFormat df=new SimpleDateFormat();
+		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 		String title;
 		while(rs.next()){
 			title=rs.getString(1);
@@ -95,12 +116,22 @@ public class MainServlet extends HttpServlet {
 			}else{
 				dateStr=df.format(date);
 			}
-			pw.print("<div class='entry'><hr><span class='title'>"+title+"</span><span class='date'>"+dateStr
-			+"</span></div><br>");
+			int id=rs.getInt(3);
+			pw.print("<div class='entry'><hr><a href='display.html?category=essay&id="
+			+id+"'><span class='title'>"+title+"</span><span class='date'>"+dateStr
+			+"</span></a></div>");
 		}
 		
 	}
-	private void writer(HttpServletRequest request, HttpServletResponse response) throws SQLException{
+	private void writer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
+		if(request.getSession().getAttribute("loggedIn")==null){
+			response.sendRedirect("writerLogin.jsp");
+			return;
+		}
+		if(!(boolean)request.getSession().getAttribute("loggedIn")){
+			response.sendRedirect("writerLogin.jsp");
+			return;
+		}
 		response.setCharacterEncoding("UTF-8");
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -119,6 +150,53 @@ public class MainServlet extends HttpServlet {
 		System.out.println(content);
 		stmt.executeUpdate("insert into essay (title,content,time)"
 				+ " value('"+title+"','"+content+"','"+timeStr+"')");
+	}
+	private void login(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
+		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/rareblog","root","");
+		Statement stmt=conn.createStatement();
+		String enteredPass=request.getParameter("writerPass");
+		ResultSet rs=stmt.executeQuery("select pass from password where id=1" );
+		rs.next();
+		String realPass=rs.getString(1);
+		System.out.println(realPass);
+		System.out.println(enteredPass);
+		if(enteredPass.equals(realPass)){
+			System.out.println("loggedin");
+			request.getSession().setAttribute("loggedIn", true);
+			response.sendRedirect("writer.jsp");
+		}else{
+			System.out.println("wrongpass");
+			response.sendRedirect("writerLogin.jsp");
+		}
+	}
+	private void checkLogin(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		if(request.getSession().getAttribute("loggedIn")==null){
+			response.getWriter().print("stranger");
+			return;
+		}
+		if((boolean)request.getSession().getAttribute("loggedIn")){
+			response.getWriter().print("loggedIn");
+		}else{
+			response.getWriter().print("stranger");
+		}
+	}
+	
+	private void getContent(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
+		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/rareblog","root","");
+		Statement stmt=conn.createStatement();
+		String category=request.getParameter("category");
+		long id=Long.valueOf(request.getParameter("id"));
+		ResultSet rs;
+		if(category.equals("essay")){
+			rs=stmt.executeQuery("select title, content, time from essay where id="+id);
+		}else{
+			rs=stmt.executeQuery("select title, content, time from novel where id="+id);
+		}
+		rs.next();
+		String title=rs.getString(1);
+		String content=rs.getString(2);
+		response.getWriter().print("<div id='title'>"+title
+				+"</div><div id='content'>"+content+"</div>");
 	}
 
 }
