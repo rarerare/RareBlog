@@ -18,10 +18,10 @@
 <body id="mainbody">
 <div class="container">
 <ul class="nav nav-tabs">
-	<li class="active"><a id="introtab" data-toggle="tab" href="#intro">关于作者</a></li>
-	<li><a id="essaytab" data-toggle="tab" href="#essay">随笔</a></li>
-	<li><a id="noveltab" data-toggle="tab" href="#novel">小说</a></li>
-	<li><a id="contacttab" data-toggle="tab" href="#contact">联系作者</a></li>
+	<li class="active"><a id="introTab" data-toggle="tab" href="#intro">关于作者</a></li>
+	<li><a id="essayTab" data-toggle="tab" href="#essay">随笔</a></li>
+	<li><a id="novelTab" data-toggle="tab" href="#novel">小说</a></li>
+	<li><a id="contactTab" data-toggle="tab" href="#contact">联系作者</a></li>
 </ul>
 <div class="tab-content">
 	<div id="intro" class="tab-pane fade in active main-tab-pane">
@@ -30,10 +30,8 @@
 		思考它深层的逻辑， 而不是满足于简单的解释。 算是一个aesthete, thinker,
 		和文学爱好者。 
 	</div>
-	<div id="essay" class="tab-pane fade if-tab-pane" >
-		<iframe src="essayEntries.html" frameborder="0" class="tabFrame">
-		
-		</iframe>
+	<div id="essay" class="tab-pane fade main-tab-pane" >
+		<div id="essay_entries" class="entries"></div>
 	</div>
 	<div id="novel" class="tab-pane fade if-tab-pane">
 		

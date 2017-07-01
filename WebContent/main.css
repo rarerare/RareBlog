@@ -18,7 +18,7 @@
 }
 
 
-.active #introtab,.active #essaytab, .active #noveltab, .active #contacttab{
+.active #introTab,.active #essayTab, .active #novelTab, .active #contactTab{
 	background-color:#ffffee;
 }
 .entry{
@@ -44,7 +44,6 @@
 .if-tab-pane{
 	background-color:#ffffee;
 	color:#000000;
-	padding:0px;
 	text-indent: 2em;
 	line-height:200%;
 	border-style:none;

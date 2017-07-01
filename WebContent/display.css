@@ -1,8 +1,21 @@
 #displayBody{
-	padding:20px;
-	background-color:#ffffee;
+	font-size:1.6em;
+	
+	background-color:#dddd99;
 	
 }
 #title{
 	text-align:center;
+}
+#displayDiv{
+	margin:20px;
+	padding:20px;
+	background-color:#ffffee;
+}
+#articleDiv{
+	text-indent: 2em;
+}
+.navToMain{
+	background-color:#cccc88;
+	
 }

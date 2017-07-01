@@ -11,14 +11,19 @@
 <link rel="stylesheet" href="display.css">
 </head>
 <body id="displayBody">
-<a href="essayEntries.html">返回</a>
+<div class="navToMain"><a href="main.jsp">Ruoruo的博客</a></div>
+<a href="main.jsp?tab=essayTab">返回列表</a>
+<div id="displayDiv">
 <div id="articleDiv">
 </div><br>
 <form action="mainservlet">
 <input type="hidden" name="mAction" value="comment">
-<textarea col="180" row="5" placeholder="评论"></textarea><br>
+<textarea cols="80" rows="5" placeholder="评论"></textarea><br>
 
 <input type="submit" id="commentSubmitButt">
 </form>
+</div>
+
+
 </body>
 </html>
