@@ -1,5 +1,11 @@
 window.onload=function(){
-	goToTab();
+	$.post(
+			"mainservlet",
+			{
+				mAction: "recordVisitor"
+			}
+			);
+	
 	$.post(
 			"mainservlet",
 			{
@@ -9,22 +15,35 @@ window.onload=function(){
 				$("#essay_entries").html(data);
 			}
 	);
-	resizeIframe();
+	$.post(
+			"mainservlet",
+			{
+				mAction: "getEss"
+			},
+			function(data, status, jqXHR ){
+				$("#essay_entries").html(data);
+			}
+	);
+	$.post(
+			"mainservlet",
+			{
+				mAction: "getNov"
+			},
+			function(data, status, jqXHR ){
+				$("#novel_entries").html(data);
+			}
+	);
+	goToTab();
 		
 }
 function goToTab(){
 	var url=window.location.href;
-	var tabId="#"+(url.split("?"))[1].slice(4);
+	if(url.split("?")[1]){
+		var tabId="#"+(url.split("?"))[1].slice(4);
+		$(tabId).tab('show');
+	}
 	
-	$(tabId).tab('show');
-}
-function resizeIframe(){
-	$(".tabFrame").each(function(){
-		var frame=this;
-		this.onload=function(){
-			
-			frame.height=frame.contentWindow.document.body.scrollHeight;
-		}
-	});
+	
 	
 }
+

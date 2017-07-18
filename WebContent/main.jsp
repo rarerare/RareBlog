@@ -33,8 +33,8 @@
 	<div id="essay" class="tab-pane fade main-tab-pane" >
 		<div id="essay_entries" class="entries"></div>
 	</div>
-	<div id="novel" class="tab-pane fade if-tab-pane">
-		
+	<div id="novel" class="tab-pane fade main-tab-pane">
+		<div id="novel_entries" class="entries"></div>
 	</div>
 	<div id="contact" class="tab-pane fade main-tab-pane ">
 		

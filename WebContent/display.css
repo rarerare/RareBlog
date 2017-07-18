@@ -2,6 +2,7 @@
 	font-size:1.6em;
 	
 	background-color:#dddd99;
+	color:#000000;
 	
 }
 #title{
@@ -18,4 +19,8 @@
 .navToMain{
 	background-color:#cccc88;
 	
+}
+span.time{
+	font-size: 0.7em;
+	color:#444444;
 }

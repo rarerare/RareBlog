@@ -18,10 +18,15 @@
 </div><br>
 <form action="mainservlet">
 <input type="hidden" name="mAction" value="comment">
-<textarea cols="80" rows="5" placeholder="评论"></textarea><br>
+<hr>
 
-<input type="submit" id="commentSubmitButt">
+<textarea id="commentText" name="commentText" cols="80" rows="3" placeholder="评论"></textarea><br>
+
+<input type="submit" id="commentSubmitButt" value="发表评论">
 </form>
+<hr>
+<div id="prevComment">
+</div>
 </div>
 
 
